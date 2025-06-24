@@ -14,6 +14,9 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      /* Default text color is a dark blue */
+      color: #1E3A8A;
+      /* Tailwind blue-900 */
     }
 
     /* Custom Gradient Background for Blue Theme */
@@ -45,7 +48,9 @@
       margin: 0 auto;
       overflow: hidden;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Changed box-shadow from black (which can look gray) to a subtle blue */
+      box-shadow: 0 4px 6px rgba(96, 165, 250, 0.2);
+      /* Using a transparent blue for the shadow */
     }
 
     .carousel-wrapper {
@@ -64,6 +69,17 @@
       object-fit: cover;
       display: block;
     }
+
+    /* Styles for content sections to hide/show */
+    .content-section {
+      display: none; /* Hide all content sections by default */
+    }
+
+    .content-section.active {
+      display: block; /* Show the active content section */
+    }
+
+    /* Scroll offset is not needed when using display:none/block for sections */
   </style>
   <script type="application/ld+json">
     {
@@ -75,96 +91,376 @@
   </script>
 </head>
 
-<body class="bg-white text-gray-800">
+<body class="bg-white text-blue-900">
+  <!-- Message for Single Mothers (Fixed Top) -->
   <div class="fixed top-0 left-0 w-full bg-blue-600 text-white text-center py-2 z-50 text-sm">
     <p>¡Madres solteras! Transformen su potencial en éxito. Este es su espacio para emprender y crecer.</p>
   </div>
 
 
-  <header class="flex items-center justify-between p-4 bg-blue-gradient text-white mt-10">
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 bg-blue-gradient text-white mt-10 fixed top-0 w-full z-40">
+    <!-- Added mt-10 to account for fixed message, and fixed positioning for the header itself -->
     <div class="text-xl font-bold">Madres Emprendedoras</div>
     <nav class="space-x-4">
-      <a href="index.html" class="hover:underline">Inicio</a>
-      <a href="servicios.html" class="hover:underline">Servicios</a>
-      <a href="calendario.html" class="hover:underline">Calendario</a>
-      <a href="tienda.html" class="hover:underline">Tienda</a>
-      <a href="contacto.html" class="hover:underline">Contacto</a>
+      <!-- Links now trigger JavaScript to show specific sections -->
+      <a href="#" class="hover:underline" onclick="showSection('inicio')">Inicio</a>
+      <a href="#" class="hover:underline" onclick="showSection('servicios')">Servicios</a>
+      <a href="#" class="hover:underline" onclick="showSection('calendario')">Calendario</a>
+      <a href="#" class="hover:underline" onclick="showSection('tienda')">Tienda</a>
+      <a href="#" class="hover:underline" onclick="showSection('contacto')">Contacto</a>
     </nav>
-    <a href="login.html"
-      class="bg-white text-blue-600-custom px-4 py-2 rounded font-semibold hover:bg-blue-100-custom">Acceso
-      Usuarios</a>
+    <a href="#" class="bg-white text-blue-600-custom px-4 py-2 rounded font-semibold hover:bg-blue-100-custom" onclick="showSection('login')">Acceso Usuarios</a>
   </header>
 
-  <section class="relative h-[60vh] overflow-hidden">
-    <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>
-      <source src="https://cdn.coverr.co/videos/coverr-mother-working-at-home-3686/1080p.mp4" type="video/mp4" />
-    </video>
-    <div class="relative z-10 bg-black bg-opacity-50 h-full flex items-center justify-center">
-      <div class="text-center text-white px-4">
-        <h1 class="text-4xl font-bold mb-4">Transforma tu pasión en un negocio online</h1>
-        <p class="text-lg mb-6">Herramientas y formación para madres que quieren emprender desde casa</p>
-        <a href="servicios.html"
-          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Descubre cómo</a>
-      </div>
-    </div>
-  </section>
+  <!-- Main content container to manage section visibility -->
+  <main class="mt-24">
+    <!-- Adjusted margin-top to account for both fixed message and fixed header -->
 
-  <section class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold text-center mb-8">¿Por qué elegirnos?</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-blue-gradient p-6 rounded shadow text-white">
-        <h3 class="text-xl font-semibold mb-2">100% Digital y Flexible</h3>
-        <p>Accede a tus cursos y herramientas desde casa, a tu ritmo.</p>
-      </div>
-      <div class="bg-blue-gradient p-6 rounded shadow text-white">
-        <h3 class="text-xl font-semibold mb-2">Comunidad de Apoyo</h3>
-        <p>Únete a otras madres con tus mismas inquietudes y crece en red.</p>
-      </div>
-      <div class="bg-blue-gradient p-6 rounded shadow text-white">
-        <h3 class="text-xl font-semibold mb-2">Asesoramiento Personalizado</h3>
-        <p>Te acompañamos paso a paso para que logres resultados reales.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-12 px-6 bg-white">
-    <h2 class="text-2xl font-bold text-center mb-8">Madres emprendedoras inspirando</h2>
-    <div class="carousel-container">
-      <div class="carousel-wrapper" id="carouselWrapper">
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/800x400/?mother,child,laptop,work"
-            alt="Madre trabajando con su hijo cerca" />
-        </div>
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/800x400/?mother,baby,business,home"
-            alt="Madre con bebé manejando un negocio desde casa" />
-        </div>
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/800x400/?mother,children,online,education"
-            alt="Madre enseñando a sus hijos mientras trabaja online" />
-        </div>
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/800x400/?parenting,entrepreneur,family,success"
-            alt="Madre emprendedora celebrando el éxito con su familia" />
+    <!-- HERO Section (Inicio) -->
+    <section id="inicio" class="content-section active relative h-[60vh] overflow-hidden">
+      <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>
+        <source src="https://cdn.coverr.co/videos/coverr-mother-working-at-home-3686/1080p.mp4" type="video/mp4" />
+      </video>
+      <div class="relative z-10 bg-black bg-opacity-50 h-full flex items-center justify-center">
+        <div class="text-center text-white px-4">
+          <h1 class="text-4xl font-bold mb-4">Transforma tu pasión en un negocio online</h1>
+          <p class="text-lg mb-6">Herramientas y formación para madres que quieren emprender desde casa</p>
+          <a href="#" onclick="showSection('servicios')"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Descubre cómo</a>
         </div>
       </div>
-    </div>
-  </section>
+      <!-- Beneficios Section - part of Inicio -->
+      <div class="py-12 px-6 bg-white">
+        <h2 class="text-2xl font-bold text-center mb-8">¿Por qué elegirnos?</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-blue-gradient p-6 rounded shadow text-white">
+            <h3 class="text-xl font-semibold mb-2">100% Digital y Flexible</h3>
+            <p>Accede a tus cursos y herramientas desde casa, a tu ritmo.</p>
+          </div>
+          <div class="bg-blue-gradient p-6 rounded shadow text-white">
+            <h3 class="text-xl font-semibold mb-2">Comunidad de Apoyo</h3>
+            <p>Únete a otras madres con tus mismas inquietudes y crece en red.</p>
+          </div>
+          <div class="bg-blue-gradient p-6 rounded shadow text-white">
+            <h3 class="text-xl font-semibold mb-2">Asesoramiento Personalizado</h3>
+            <p>Te acompañamos paso a paso para que logres resultados reales.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Automatic Carousel Section - part of Inicio -->
+      <div class="py-12 px-6 bg-white">
+        <h2 class="text-2xl font-bold text-center mb-8">Madres emprendedoras inspirando</h2>
+        <div class="carousel-container">
+          <div class="carousel-wrapper" id="carouselWrapper">
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/800x400/?mother,child,laptop,work"
+                alt="Madre trabajando con su hijo cerca" />
+            </div>
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/800x400/?mother,baby,business,home"
+                alt="Madre con bebé manejando un negocio desde casa" />
+            </div>
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/800x400/?mother,children,online,education"
+                alt="Madre enseñando a sus hijos mientras trabaja online" />
+            </div>
+            <div class="carousel-item">
+              <img src="https://source.unsplash.com/800x400/?parenting,entrepreneur,family,success"
+                alt="Madre emprendedora celebrando el éxito con su familia" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- CTA - part of Inicio -->
+      <div class="bg-blue-gradient-dark text-white py-12 text-center">
+        <h2 class="text-2xl font-bold mb-4">¿Lista para dar el primer paso?</h2>
+        <p class="mb-6">Inscríbete hoy y accede a formación, comunidad y herramientas exclusivas.</p>
+        <a href="#" onclick="showSection('tienda')"
+          class="bg-white text-blue-600-custom font-semibold px-6 py-3 rounded hover:bg-blue-100-custom">Explora
+          nuestros cursos</a>
+      </div>
+    </section>
 
-  <section class="bg-blue-gradient-dark text-white py-12 text-center">
-    <h2 class="text-2xl font-bold mb-4">¿Lista para dar el primer paso?</h2>
-    <p class="mb-6">Inscríbete hoy y accede a formación, comunidad y herramientas exclusivas.</p>
-    <a href="tienda.html"
-      class="bg-white text-blue-600-custom font-semibold px-6 py-3 rounded hover:bg-blue-100-custom">Explora
-      nuestros cursos</a>
-  </section>
+    <!-- Madres Solteras Section with Contact Form (always accessible via its navigation link) -->
+    <section id="madres-solteras" class="content-section py-16 px-6 bg-blue-50 text-blue-900 flex justify-center items-center">
+      <div class="max-w-3xl w-full bg-white p-8 rounded-lg shadow-xl"
+        style="box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);">
+        <h2 class="text-3xl font-bold text-center mb-6 text-blue-700">¡Un Espacio para Madres Solteras Emprendedoras!</h2>
+        <p class="text-lg text-center mb-8">
+          Sabemos que emprender siendo madre soltera puede presentar desafíos únicos, pero también un enorme potencial.
+          Aquí encontrarás el apoyo, la formación y las herramientas necesarias para transformar tu visión en un negocio digital exitoso.
+          ¡No estás sola en este camino! Permítenos acompañarte.
+        </p>
 
+        <h3 class="text-2xl font-bold text-center mb-6 text-blue-700">Ponte en Contacto para Emprender</h3>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block text-blue-900 font-semibold mb-2">Tu Nombre:</label>
+            <input type="text" id="name" name="name"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <div>
+            <label for="email" class="block text-blue-900 font-semibold mb-2">Tu Correo Electrónico:</label>
+            <input type="email" id="email" name="email"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <div>
+            <label for="message" class="block text-blue-900 font-semibold mb-2">Tu Mensaje / ¿Cómo podemos ayudarte?</label>
+            <textarea id="message" name="message" rows="5"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out">
+            Enviar Mensaje
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="content-section py-16 px-6 bg-white">
+      <h2 class="text-3xl font-bold text-center mb-8 text-blue-700">Nuestros Servicios</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-blue-100 p-6 rounded-lg shadow-md text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <h3 class="text-2xl font-semibold mb-3 text-blue-800">Cursos Digitales</h3>
+          <p class="mb-4">Accede a una amplia variedad de cursos online diseñados para madres emprendedoras. Desde
+            marketing digital hasta gestión de tiempo y finanzas.</p>
+          <ul class="list-disc list-inside text-blue-800">
+            <li>Creación de Infoproductos</li>
+            <li>Marketing en Redes Sociales</li>
+            <li>Diseño Web Básico</li>
+            <li>Productividad para Madres</li>
+          </ul>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-lg shadow-md text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <h3 class="text-2xl font-semibold mb-3 text-blue-800">Ebooks y Guías</h3>
+          <p class="mb-4">Descarga guías prácticas y ebooks especializados que te ayudarán a dar los primeros pasos o
+            a escalar tu negocio digital.</p>
+          <ul class="list-disc list-inside text-blue-800">
+            <li>Guía Rápida para Emprender</li>
+            <li>Ebook: "Tu Marca Personal"</li>
+            <li>Plantillas para Redes Sociales</li>
+            <li>Checklist de Lanzamiento</li>
+          </ul>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-lg shadow-md text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <h3 class="text-2xl font-semibold mb-3 text-blue-800">Consultorías Personalizadas</h3>
+          <p class="mb-4">Sesiones uno a uno con expertas en emprendimiento digital para resolver tus dudas y crear
+            una estrategia a tu medida.</p>
+          <ul class="list-disc list-inside text-blue-800">
+            <li>Asesoría de Negocio</li>
+            <li>Mentoring Digital</li>
+            <li>Revisión de Estrategia</li>
+            <li>Soporte Técnico</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendario Section -->
+    <section id="calendario" class="content-section py-16 px-6 bg-blue-50">
+      <h2 class="text-3xl font-bold text-center mb-8 text-blue-700">Próximos Eventos y Webinars</h2>
+      <div class="max-w-4xl mx-auto space-y-6">
+        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <div class="md:w-1/4 text-center md:text-left mb-4 md:mb-0">
+            <p class="text-blue-600 font-bold text-xl">20 JUL</p>
+            <p class="text-blue-400">10:00 AM CEST</p>
+          </div>
+          <div class="md:w-3/4 md:pl-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Webinar: Primeros Pasos en el Emprendimiento Digital
+            </h3>
+            <p class="text-blue-900">Descubre cómo empezar tu negocio online desde cero, identificar tu nicho y crear
+              tu primer infoproducto.</p>
+            <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">¡Regístrate aquí!</a>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <div class="md:w-1/4 text-center md:text-left mb-4 md:mb-0">
+            <p class="text-blue-600 font-bold text-xl">05 AGO</p>
+            <p class="text-blue-400">18:00 PM CEST</p>
+          </div>
+          <div class="md:w-3/4 md:pl-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Taller Práctico: Crea tu Ebook en 3 Días</h3>
+            <p class="text-blue-900">Aprende el proceso completo para escribir, diseñar y lanzar tu propio ebook con
+              herramientas gratuitas.</p>
+            <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">¡Inscríbete ahora!</a>
+          </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <div class="md:w-1/4 text-center md:text-left mb-4 md:mb-0">
+            <p class="text-blue-600 font-bold text-xl">15 SEP</p>
+            <p class="text-blue-400">11:00 AM CEST</p>
+          </div>
+          <div class="md:w-3/4 md:pl-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Sesión de Preguntas y Respuestas con Madres Exitosas
+            </h3>
+            <p class="text-blue-900">Una oportunidad única para preguntar directamente a madres que ya están
+              triunfando en el mundo digital.</p>
+            <a href="#" class="text-blue-600 hover:underline mt-2 inline-block">¡Reserva tu plaza!</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tienda Section -->
+    <section id="tienda" class="content-section py-16 px-6 bg-white">
+      <h2 class="text-3xl font-bold text-center mb-8 text-blue-700">Nuestra Tienda Digital</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Product Card 1 -->
+        <div class="bg-blue-100 rounded-lg shadow-md overflow-hidden text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <img src="https://placehold.co/400x250/60A5FA/FFFFFF?text=Curso+Marketing" alt="Curso de Marketing Digital"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Curso Completo de Marketing Digital</h3>
+            <p class="text-lg font-bold text-blue-600 mb-4">€99.99</p>
+            <p class="text-sm mb-4">Aprende a construir tu estrategia de marketing online desde cero. Incluye SEO,
+              redes sociales y email marketing.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Comprar
+              Ahora</button>
+          </div>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="bg-blue-100 rounded-lg shadow-md overflow-hidden text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <img src="https://placehold.co/400x250/3B82F6/FFFFFF?text=Ebook+Productividad"
+            alt="Ebook de Productividad" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Ebook: Productividad para Madres Ocupadas</h3>
+            <p class="text-lg font-bold text-blue-600 mb-4">€19.99</p>
+            <p class="text-sm mb-4">Descubre técnicas y herramientas para optimizar tu tiempo y ser más eficiente sin
+              sacrificar tu vida familiar.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Comprar
+              Ahora</button>
+          </div>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="bg-blue-100 rounded-lg shadow-md overflow-hidden text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <img src="https://placehold.co/400x250/2563EB/FFFFFF?text=Plantillas+RRSS"
+            alt="Pack de Plantillas para Redes Sociales" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Pack de Plantillas para Redes Sociales</h3>
+            <p class="text-lg font-bold text-blue-600 mb-4">€34.99</p>
+            <p class="text-sm mb-4">Ahorra tiempo y crea contenido visual atractivo con nuestro pack de plantillas
+              editables para Instagram, Facebook y Pinterest.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Comprar
+              Ahora</button>
+          </div>
+        </div>
+        <!-- Product Card 4 -->
+        <div class="bg-blue-100 rounded-lg shadow-md overflow-hidden text-blue-900"
+          style="box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);">
+          <img src="https://placehold.co/400x250/1D4ED8/FFFFFF?text=Mentoria+1-1" alt="Mentoría Personalizada 1 a 1"
+            class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 text-blue-800">Mentoría Personalizada 1 a 1</h3>
+            <p class="text-lg font-bold text-blue-600 mb-4">€149.99</p>
+            <p class="text-sm mb-4">Sesiones exclusivas para tu negocio. Obtén asesoramiento directo para superar
+              obstáculos y alcanzar tus metas.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Reservar
+              Sesión</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section (direct contact form, without "Madres Solteras" specific text) -->
+    <section id="contacto" class="content-section py-16 px-6 bg-blue-50 text-blue-900 flex justify-center items-center">
+      <div class="max-w-xl w-full bg-white p-8 rounded-lg shadow-xl"
+        style="box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);">
+        <h2 class="text-3xl font-bold text-center mb-6 text-blue-700">Contáctanos</h2>
+        <p class="text-center mb-8">¿Tienes preguntas o necesitas asesoramiento? ¡Estamos aquí para ayudarte!</p>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="contact-name" class="block text-blue-900 font-semibold mb-2">Nombre:</label>
+            <input type="text" id="contact-name" name="name"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <div>
+            <label for="contact-email" class="block text-blue-900 font-semibold mb-2">Correo Electrónico:</label>
+            <input type="email" id="contact-email" name="email"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <div>
+            <label for="contact-message" class="block text-blue-900 font-semibold mb-2">Tu Mensaje:</label>
+            <textarea id="contact-message" name="message" rows="5"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out">
+            Enviar
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Login/Access Section -->
+    <section id="login" class="content-section py-16 px-6 bg-blue-50 text-blue-900 flex justify-center items-center">
+      <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-xl"
+        style="box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 0 4px 6px -2px rgba(59, 130, 246, 0.1);">
+        <h2 class="text-3xl font-bold text-center mb-6 text-blue-700">Acceso Usuarios</h2>
+        <p class="text-center mb-8">Ingresa tus credenciales para acceder a tu panel de usuario.</p>
+        <form action="#" method="POST" class="space-y-4">
+          <div>
+            <label for="username" class="block text-blue-900 font-semibold mb-2">Usuario o Email:</label>
+            <input type="text" id="username" name="username"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <div>
+            <label for="password" class="block text-blue-900 font-semibold mb-2">Contraseña:</label>
+            <input type="password" id="password" name="password"
+              class="w-full p-3 border-2 border-blue-300 rounded-md focus:outline-none focus:border-blue-500" required>
+          </div>
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out">
+            Iniciar Sesión
+          </button>
+          <p class="text-center text-sm mt-4">
+            <a href="#" class="text-blue-600 hover:underline">¿Olvidaste tu contraseña?</a> |
+            <a href="#" class="text-blue-600 hover:underline">Regístrate</a>
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
   <footer class="bg-blue-900 text-white text-center py-6">
     <p>&copy; 2025 Madres Emprendedoras Digitales. Todos los derechos reservados.</p>
   </footer>
 
   <script>
-    // Carousel functionality
+    // JavaScript for section visibility
+    function showSection(sectionId) {
+      // Get all content sections
+      const sections = document.querySelectorAll('.content-section');
+      // Hide all sections
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      // Show the selected section
+      const activeSection = document.getElementById(sectionId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        // Scroll to the top of the main content area (below fixed header)
+        window.scrollTo({
+          top: document.querySelector('main').offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Carousel functionality (remains unchanged)
     const carouselWrapper = document.getElementById('carouselWrapper');
     const carouselItems = document.querySelectorAll('.carousel-item');
     const totalItems = carouselItems.length;
@@ -177,6 +473,11 @@
 
     // Auto-advance carousel every 3 seconds
     setInterval(moveToNextItem, 3000);
+
+    // Initial load: ensure 'inicio' section is shown and carousel is active
+    document.addEventListener('DOMContentLoaded', () => {
+        showSection('inicio'); // Ensure 'inicio' is visible on page load
+    });
   </script>
 </body>
 
