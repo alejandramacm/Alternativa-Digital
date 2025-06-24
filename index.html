@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portal de madres emprendedoras que desean vender online mediante cursos digitales, ebooks y servicios personalizados. Descubre cómo digitalizarte fácilmente." />
+  <meta name="description"
+    content="Portal de madres emprendedoras que desean vender online mediante cursos digitales, ebooks y servicios personalizados. Descubre cómo digitalizarte fácilmente." />
   <meta name="keywords" content="madres emprendedoras, vender online, cursos digitales, infoproductos, ebooks, sitio web para mujeres" />
   <meta name="author" content="Madres Emprendedoras Digitales" />
   <title>Madres Emprendedoras Digitales | Transforma tu pasión en un negocio online</title>
@@ -14,20 +15,73 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+
+    /* Custom Gradient Background for Blue Theme */
+    .bg-blue-gradient {
+      background: linear-gradient(to right, #60A5FA, #3B82F6);
+      /* Tailwind blue-400 to blue-500 */
+    }
+
+    .bg-blue-gradient-dark {
+      background: linear-gradient(to right, #3B82F6, #2563EB);
+      /* Tailwind blue-500 to blue-600 */
+    }
+
+    .text-blue-600-custom {
+      color: #2563EB;
+      /* Deeper blue for accents */
+    }
+
+    .hover\:bg-blue-100-custom:hover {
+      background-color: #DBEAFE;
+      /* Tailwind blue-100 */
+    }
+
+    /* Carousel styles */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-wrapper {
+      display: flex;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      display: block;
+    }
   </style>
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Madres Emprendedoras Digitales",
-    "url": "https://tusitioweb.com"
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Madres Emprendedoras Digitales",
+      "url": "https://tusitioweb.com"
+    }
   </script>
 </head>
 
 <body class="bg-white text-gray-800">
-  <!-- Header -->
-  <header class="flex items-center justify-between p-4 bg-pink-600 text-white">
+  <div class="fixed top-0 left-0 w-full bg-blue-600 text-white text-center py-2 z-50 text-sm">
+    <p>¡Madres solteras! Transformen su potencial en éxito. Este es su espacio para emprender y crecer.</p>
+  </div>
+
+
+  <header class="flex items-center justify-between p-4 bg-blue-gradient text-white mt-10">
     <div class="text-xl font-bold">Madres Emprendedoras</div>
     <nav class="space-x-4">
       <a href="index.html" class="hover:underline">Inicio</a>
@@ -36,10 +90,11 @@
       <a href="tienda.html" class="hover:underline">Tienda</a>
       <a href="contacto.html" class="hover:underline">Contacto</a>
     </nav>
-    <a href="login.html" class="bg-white text-pink-600 px-4 py-2 rounded font-semibold hover:bg-pink-100">Acceso Usuarios</a>
+    <a href="login.html"
+      class="bg-white text-blue-600-custom px-4 py-2 rounded font-semibold hover:bg-blue-100-custom">Acceso
+      Usuarios</a>
   </header>
 
-  <!-- HERO Section -->
   <section class="relative h-[60vh] overflow-hidden">
     <video class="absolute top-0 left-0 w-full h-full object-cover" autoplay muted loop>
       <source src="https://cdn.coverr.co/videos/coverr-mother-working-at-home-3686/1080p.mp4" type="video/mp4" />
@@ -48,52 +103,81 @@
       <div class="text-center text-white px-4">
         <h1 class="text-4xl font-bold mb-4">Transforma tu pasión en un negocio online</h1>
         <p class="text-lg mb-6">Herramientas y formación para madres que quieren emprender desde casa</p>
-        <a href="servicios.html" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-6 rounded">Descubre cómo</a>
+        <a href="servicios.html"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Descubre cómo</a>
       </div>
     </div>
   </section>
 
-  <!-- Beneficios -->
-  <section class="py-12 px-6 bg-gray-50">
+  <section class="py-12 px-6 bg-white">
     <h2 class="text-2xl font-bold text-center mb-8">¿Por qué elegirnos?</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded shadow">
+      <div class="bg-blue-gradient p-6 rounded shadow text-white">
         <h3 class="text-xl font-semibold mb-2">100% Digital y Flexible</h3>
         <p>Accede a tus cursos y herramientas desde casa, a tu ritmo.</p>
       </div>
-      <div class="bg-white p-6 rounded shadow">
+      <div class="bg-blue-gradient p-6 rounded shadow text-white">
         <h3 class="text-xl font-semibold mb-2">Comunidad de Apoyo</h3>
         <p>Únete a otras madres con tus mismas inquietudes y crece en red.</p>
       </div>
-      <div class="bg-white p-6 rounded shadow">
+      <div class="bg-blue-gradient p-6 rounded shadow text-white">
         <h3 class="text-xl font-semibold mb-2">Asesoramiento Personalizado</h3>
         <p>Te acompañamos paso a paso para que logres resultados reales.</p>
       </div>
     </div>
   </section>
 
-  <!-- Galería de imágenes -->
-  <section class="py-12 px-6">
-    <h2 class="text-2xl font-bold text-center mb-8">Historias que inspiran</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <img src="https://source.unsplash.com/400x300/?mother,laptop" alt="Madre trabajando desde casa" class="rounded shadow" />
-      <img src="https://source.unsplash.com/400x300/?woman,business" alt="Mujer emprendedora" class="rounded shadow" />
-      <img src="https://source.unsplash.com/400x300/?online,course" alt="Curso digital" class="rounded shadow" />
-      <img src="https://source.unsplash.com/400x300/?workspace,home" alt="Espacio de trabajo desde casa" class="rounded shadow" />
+  <section class="py-12 px-6 bg-white">
+    <h2 class="text-2xl font-bold text-center mb-8">Madres emprendedoras inspirando</h2>
+    <div class="carousel-container">
+      <div class="carousel-wrapper" id="carouselWrapper">
+        <div class="carousel-item">
+          <img src="https://source.unsplash.com/800x400/?mother,child,laptop,work"
+            alt="Madre trabajando con su hijo cerca" />
+        </div>
+        <div class="carousel-item">
+          <img src="https://source.unsplash.com/800x400/?mother,baby,business,home"
+            alt="Madre con bebé manejando un negocio desde casa" />
+        </div>
+        <div class="carousel-item">
+          <img src="https://source.unsplash.com/800x400/?mother,children,online,education"
+            alt="Madre enseñando a sus hijos mientras trabaja online" />
+        </div>
+        <div class="carousel-item">
+          <img src="https://source.unsplash.com/800x400/?parenting,entrepreneur,family,success"
+            alt="Madre emprendedora celebrando el éxito con su familia" />
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="bg-pink-600 text-white py-12 text-center">
+  <section class="bg-blue-gradient-dark text-white py-12 text-center">
     <h2 class="text-2xl font-bold mb-4">¿Lista para dar el primer paso?</h2>
     <p class="mb-6">Inscríbete hoy y accede a formación, comunidad y herramientas exclusivas.</p>
-    <a href="tienda.html" class="bg-white text-pink-600 font-semibold px-6 py-3 rounded hover:bg-pink-100">Explora nuestros cursos</a>
+    <a href="tienda.html"
+      class="bg-white text-blue-600-custom font-semibold px-6 py-3 rounded hover:bg-blue-100-custom">Explora
+      nuestros cursos</a>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white text-center py-6">
+  <footer class="bg-blue-900 text-white text-center py-6">
     <p>&copy; 2025 Madres Emprendedoras Digitales. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    // Carousel functionality
+    const carouselWrapper = document.getElementById('carouselWrapper');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const totalItems = carouselItems.length;
+    let currentIndex = 0;
+
+    function moveToNextItem() {
+      currentIndex = (currentIndex + 1) % totalItems;
+      carouselWrapper.style.transform = `translateX(${-currentIndex * 100}%)`;
+    }
+
+    // Auto-advance carousel every 3 seconds
+    setInterval(moveToNextItem, 3000);
+  </script>
 </body>
 
 </html>
