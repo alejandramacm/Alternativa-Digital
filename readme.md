@@ -1,6 +1,3 @@
-Madres Emprendedoras Digitales
-Este es el código fuente de un portal web diseñado para madres emprendedoras que desean vender online a través de cursos digitales, ebooks y servicios personalizados. La página ofrece herramientas, formación y una comunidad de apoyo para ayudar a las mujeres a digitalizar sus pasiones y convertirlas en negocios exitosos desde casa, con un enfoque especial en apoyar a madres solteras.
-
 ✨ Características Principales
 Navegación Dinámica en una Sola Página (SPA): Utiliza JavaScript para mostrar diferentes secciones (Inicio, Servicios, Calendario, etc.) sin recargar la página, ofreciendo una experiencia de usuario fluida.
 
